@@ -3,6 +3,10 @@ import select
 import uuid
 import threading
 
+# where is the pywshelper ?
+import os, sys
+curtPath = os.path.abspath(os.path.dirname(__file__))
+sys.path.insert(0, os.path.join(curtPath, '..'))
 import pywshelper
 
 class WebSocket(threading.Thread):
@@ -20,7 +24,7 @@ class WebSocket(threading.Thread):
         sk.bind( (host, int(port)) )
         sk.listen(5)
 
-        print 'Establish server socket - %s:%s' %(host, port)
+        print 'Establish server socket - %s:%s \n' %(host, port)
         return sk
 
     def run(self):
@@ -92,5 +96,5 @@ if __name__ == "__main__":
             print 'Capture Error: KeyboardInterrupt'
             keepAlive = False
     
-    print 'main thread exits.'
+    print '\nmain thread exits.'
 
